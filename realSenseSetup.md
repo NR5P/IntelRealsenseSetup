@@ -13,7 +13,7 @@
 ### installing sdk
 1. in terminal change directory to desktop `cd ~/Desktop`
 
-2. in terminal run `sudo apt install autoconf autogen libtool`
+2. in terminal run `sudo apt install autoconf autogen libtool -y`
 
 3. in terminal run `wget https://github.com/IntelRealSense/librealsense/raw/master/scripts/libuvc_installation.sh`
 
@@ -26,19 +26,21 @@
 ### pyrealsense2 library
 1. go to desktop directory `cd ~/Desktop`
 
-2. download the repository `git clone https://github.com/IntelRealSense/librealsense.git`
+2. install dependencies `sudo apt install python3 python3-dev`
 
-3. cd into repo `cd librealsense`
+3. download the repository `git clone https://github.com/IntelRealSense/librealsense.git`
 
-4. make a build directory and cd into it `mkdir build && cd build`
+4. cd into repo `cd librealsense`
 
-5. run cmake `cmake ../ -DBUILD_PYTHON_BINDINGS:bool=true -DPYTHON_EXECUTABLE=$(which python3)`
+5. make a build directory and cd into it `mkdir build && cd build`
 
-6. run make `make -j4`
+6. run cmake `cmake ../ -DBUILD_PYTHON_BINDINGS:bool=true -DPYTHON_EXECUTABLE=$(which python3)`
 
-7. install `sudo make install`
+7. run make `make -j4`
 
-8. update python path `export PYTHONPATH=$PYTHONPATH:/usr/local/lib`
+8. install `sudo make install`
+
+9. update python path `export PYTHONPATH=$PYTHONPATH:/usr/local/lib`
 
 ### add additional common libraries
 1. install pip `sudo apt install python3-pip`
@@ -46,3 +48,7 @@
 2. install numpy `pip3 install numpy`
 
 3. install opencv `pip3 install opencv-python`
+
+### additional info
+1. when importing pyrealsense2 in python file most examples show 
+   `import pyrealsense2` but you must import it as `import pyrealsense2.pyrealsense2`
